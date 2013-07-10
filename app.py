@@ -1,10 +1,15 @@
+import pygtk
+import gtk
+import gtk.glade
+
 class application:
-  me=null
+  me=None
   @staticmethod
   def getMe():
-    if application.me==null
+    if application.me==None:
       me=application()
-     return me
+    return me
   def __init__(self):
-    pass
+    self.gladexml=gtk.glade.XML("ui.glade")
+    gtk.main()
   
