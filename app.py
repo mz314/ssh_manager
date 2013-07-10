@@ -10,6 +10,10 @@ class application:
       me=application()
     return me
   def __init__(self):
-    self.gladexml=gtk.glade.XML("ui.glade")
+    self.gladefile="ui.glade"
+    self.builder = gtk.Builder()
+    self.builder.add_from_file(self.gladefile)
+    self.window = self.builder.get_object("mainwin")
+    self.window.show()
     gtk.main()
   
