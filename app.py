@@ -1,8 +1,10 @@
 import pygtk
 import gtk
 import gtk.glade
+
 from db import *
 from ssh import *
+from sshwindow import *
 
 class application:
   #signal handlers#
@@ -32,7 +34,8 @@ class application:
     sshc=sshClass();
     data=self.getLoginById(item[1])
     #print data
-    sshc.connect(data[1],data[2],data[3])
+    sshw=sshWindow(self.builder)
+    sshw.show()
   
   me=None
   @staticmethod
