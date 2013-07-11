@@ -1,5 +1,7 @@
 import sqlite3 as sql
 
+#TODO mysql i podlaczyc do serka
+
 class database:
   def __init__(self):
     self.conn=sql.connect("db.db")
