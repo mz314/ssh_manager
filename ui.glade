@@ -13,6 +13,10 @@
         <col id="0" translatable="yes">test</col>
         <col id="1">0</col>
       </row>
+      <row>
+        <col id="0" translatable="yes">t2</col>
+        <col id="1">111</col>
+      </row>
     </data>
   </object>
   <object class="GtkWindow" id="mainwin">
@@ -72,6 +76,12 @@
                 <property name="halign">start</property>
                 <property name="margin_right">117</property>
                 <property name="model">sshList</property>
+                <child>
+                  <object class="GtkCellRendererText" id="cellrenderertext1"/>
+                  <attributes>
+                    <attribute name="text">0</attribute>
+                  </attributes>
+                </child>
               </object>
               <packing>
                 <property name="x">30</property>
