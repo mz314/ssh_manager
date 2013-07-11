@@ -15,9 +15,24 @@ class application:
   
   #regular functions
   
+  def getLoginById(self,id):
+    found=None
+    for i in self.ssh_data:
+      if i[0]==id:
+	found=i
+	return found
+    return found
+  
+  
   def connectSsh(self, widget, data=None):
+    sshCombo=self.sshCombo
+    model=sshCombo.get_model()
+    item=model[sshCombo.get_active()]
+    #print item[1]
     sshc=sshClass();
-    sshc.connect('a','b','c')
+    data=self.getLoginById(item[1])
+    #print data
+    sshc.connect(data[1],data[2],data[3])
   
   me=None
   @staticmethod
@@ -45,6 +60,7 @@ class application:
     self.builder.add_from_file(self.gladefile)
     self.window = self.builder.get_object("mainwin")
     self.sshList=self.builder.get_object("sshList")
+    self.sshCombo=self.builder.get_object('sshCombo')
     self.connectSigs()
     self.fillModels()
     self.window.show()

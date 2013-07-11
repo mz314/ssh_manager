@@ -1,5 +1,8 @@
 import os
+import libssh2
 
 class sshClass:
   def connect(self,un,pw,host):
-    os.system('konsole --hold --noclose -e echo xx yy ');
+    cmd='konsole --hold --noclose -e "sshpass -p '+pw+' ssh '+un+'@'+host+'" '
+    print cmd
+    
