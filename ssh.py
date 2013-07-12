@@ -5,7 +5,8 @@ import socket
 class sshClass:
   def command(self,cmd):
     self.channel.execute(cmd)
-    return self.channel.read(1024) #beware of the limit
+    print self.channel.read(1024) #beware of the limit
+    return False
   
   def setData(self,data):
     self.data=data
