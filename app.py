@@ -32,9 +32,11 @@ class application:
     item=model[sshCombo.get_active()]
     #print item[1]
     sshc=sshClass();
+    
     data=self.getLoginById(item[1])
-    #print data
-    sshw=sshWindow(self.builder)
+    print data
+    sshc.setData((data[1],data[2],data[3]))
+    sshw=sshWindow(self.builder,sshc)
     sshw.show()
   
   me=None
