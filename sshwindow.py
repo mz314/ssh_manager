@@ -4,9 +4,13 @@ import gtk
 class sshWindow:
   
   def keypress(self, widget, event):
-    print "test"
     if event.keyval == gtk.keysyms.Return:
-      print "ok"
+      print self.cmdbuffer
+      ret=self.ssh.command(self.cmdbuffer)
+      print ret
+      self.cmdbuffer=""
+    else:
+      self.cmdbuffer=self.cmdbuffer+event.string
   
   def delete_event(self, widget, event, data=None):
     self.ssh.disconnect()
@@ -16,6 +20,7 @@ class sshWindow:
     
     return False
   def __init__(self,builder,ssh):
+    self.cmdbuffer=""
     self.builder=builder
     self.window=builder.get_object('sshWindow')
     self.cmdLine=builder.get_object('cmdLine')
