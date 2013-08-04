@@ -1,15 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <interface>
   <!-- interface-requires gtk+ 3.0 -->
+  <object class="GtkTextBuffer" id="cmdBuffer"/>
   <object class="GtkEntryBuffer" id="entrybuffer1"/>
-  <object class="GtkListStore" id="sshList">
-    <columns>
-      <!-- column-name name -->
-      <column type="gchararray"/>
-      <!-- column-name id -->
-      <column type="gint"/>
-    </columns>
-  </object>
   <object class="GtkWindow" id="mainwin">
     <property name="can_focus">False</property>
     <property name="title" translatable="yes">Pyssh</property>
@@ -121,6 +114,57 @@
       </object>
     </child>
   </object>
+  <object class="GtkListStore" id="sshList">
+    <columns>
+      <!-- column-name name -->
+      <column type="gchararray"/>
+      <!-- column-name id -->
+      <column type="gint"/>
+    </columns>
+  </object>
+  <object class="GtkWindow" id="sshManage">
+    <property name="can_focus">False</property>
+    <child>
+      <object class="GtkTreeView" id="treeview1">
+        <property name="width_request">100</property>
+        <property name="height_request">80</property>
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="model">sshList</property>
+        <property name="headers_clickable">False</property>
+        <property name="search_column">0</property>
+        <child internal-child="selection">
+          <object class="GtkTreeSelection" id="treeview-selection"/>
+        </child>
+        <child>
+          <object class="GtkTreeViewColumn" id="name">
+            <property name="title" translatable="yes">Name</property>
+            <child>
+              <object class="GtkCellRendererText" id="cellrenderertext2"/>
+              <attributes>
+                <attribute name="text">0</attribute>
+              </attributes>
+            </child>
+          </object>
+        </child>
+        <child>
+          <object class="GtkTreeViewColumn" id="treeviewcolumn1">
+            <property name="title" translatable="yes">Host</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkTreeViewColumn" id="treeviewcolumn2">
+            <property name="title" translatable="yes">Username</property>
+          </object>
+        </child>
+        <child>
+          <object class="GtkTreeViewColumn" id="treeviewcolumn3">
+            <property name="title" translatable="yes">Password</property>
+          </object>
+        </child>
+      </object>
+    </child>
+  </object>
   <object class="GtkWindow" id="sshWindow">
     <property name="width_request">640</property>
     <property name="height_request">480</property>
@@ -135,6 +179,7 @@
           <object class="GtkTextView" id="cmdLine">
             <property name="visible">True</property>
             <property name="can_focus">True</property>
+            <property name="buffer">cmdBuffer</property>
             <signal name="key-press-event" handler="keypress" swapped="no"/>
           </object>
         </child>

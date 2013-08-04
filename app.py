@@ -52,7 +52,7 @@ class application:
   
   def fillModels(self):
     for i in self.ssh_data:
-      print i
+      #print i
       self.sshList.append((i[4],i[0]))
   
   def connectSigs(self):
